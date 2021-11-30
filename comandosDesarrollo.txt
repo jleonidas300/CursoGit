@@ -28,9 +28,11 @@ php artisan make:controller PageController --resource --model=Page	crean un cont
 
 Route::view('vista','welcome');		linea de codigo para buscar una ruta en una sola línea
 
+
 Usando eloquent
 Los modelos son representaciones de una tabla que tenemos en una base de datos
 php artisan make:model -h 	- vemos la ayuda
+
 para crearlo:
 php artisan make:model Post -m -f	creara el modelo Post con la migracion y el factory
 Para realizar la conexion habra que modificar el archivo env cambiando el nombre de la BD
