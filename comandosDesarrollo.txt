@@ -1,0 +1,119 @@
+ir al entorno virtual y ejecutar los siguientes comandos
+
+vagrant up para encenderla
+
+para acceder
+vagrant ssh
+
+then /var/www/html/app-pnc
+
+php artisan serve --host 0.0.0.0 --port 3000		levantando el server
+
+
+para bajarla
+vagrant halt
+
+git fetch -> cambiar de rama
+git checkout y el nombre de la rama
+
+
+comando para crear proyecto compose y laravel 6
+composer create-project --prefer-dist laravel/laravel NOMBRE DEL PROYECTO "6.*"
+
+comandos para crear rutas
+php artisan route:list							lista las rutas
+php artisan make:controller -nombre del controlador			se crean los controladores
+
+php artisan make:controller PageController --resource --model=Page	crean un controlador con 7 rutas
+
+Route::view('vista','welcome');		linea de codigo para buscar una ruta en una sola línea
+
+Usando eloquent
+Los modelos son representaciones de una tabla que tenemos en una base de datos
+php artisan make:model -h 	- vemos la ayuda
+para crearlo:
+php artisan make:model Post -m -f	creara el modelo Post con la migracion y el factory
+Para realizar la conexion habra que modificar el archivo env cambiando el nombre de la BD
+luego hacer las modificaciones en database, en el modelo donde se crea la nueva columna
+$table->string('title'); //se crea una columa nueva tabla, para el caso en la tabla posts
+luego: php artisan migrate con el fin de migrar la nueva columna a la BD.
+
+php artisan tinker	Abre la terminal para agregar datos a una tabla
+Antes se debe modificar en factories el archivo PostFactory
+'title'=>$faker->sentence   //para agregar oraciones aleatories en el campo titulo
+luego en la terminal de tinker se ejecuta comando para agregar datos
+factory(App\Post::class, 30)->create()	se crean 30 columnas en el modelo Post
+
+
+para crear una relación
+$table->foreign('user_id')->references('id')->on('users');
+Where the camp user_id is the foranean key which point to camp id on table users.
+To migrate and add data to tables
+php artisan migrate:refresh –seed
+
+Creal el model Post con el factory y el controller
+php artisan make: model Post -mfc 	
+
+para colocar url amigables 
+composer require cviebrock/eloquent-sluggable	
+
+para la version 6
+composer require cviebrock/eloquent-sluggable "6.*" 
+
+Para cargar los archivos js y css
+npm install
+npm run dev 
+
+Crea un controlador dentro de una carpeta con el paramentro recurso y lo pega al modelo
+php artisan make:controller Backend/PostController --resource --model=Post
+
+creando archivo de validacion para el modelo post
+php artisan make:request PostRequest
+
+para crear acceso al storage de laravel
+php artisan storage:link
+
+TESTING
+
+se crea el testeo de la clase USer
+php artisan make:test UserTest
+php artisan make:test UserTest --unit 	crea una clase de prueba en el apartado unit
+
+comando para hacer el testeo
+vendor/bin/phpunit
+
+
+CURSO DE GIT
+ 
+pwd 			ubica la carpeta por defecto donde abre git
+
+history 		muestra todos los comandos que ingresaste
+
+mkdir+carpeta	crea directorios
+ls			lista los directorios
+
+git config --list 	enumerará la configuración. Allí también debe encontrar user.name y user.email
+
+git status 		muestra el estado de tus archivos
+
+git add + nombre del archivo 		sube un archivo por vez
+git add + punto				sube todos los archivos de una
+
+git commit -m "primera subida" 	empaqueta archivos listos 
+
+git diff 					compara los cambios de los archivos 
+
+git reset HEAD + nombre del archivo		elimina el archivo deseado
+
+git checkout .		vuelve a una version anterior
+
+git log		lista/muestra todos los cambios del repositorio
+
+
+git checkout + el hast generado por git, vuelve a una versión especifica
+
+
+git remote add origin + url remota de tu respositorio sincroniza tus archivos locales en la nuebe	
+
+git push -u origin master  Para cincronizar los cambios 	
+
